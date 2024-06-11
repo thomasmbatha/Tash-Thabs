@@ -2,3 +2,21 @@
 {% block title %}
     | Login
 {% endblock  %}
+
+{% block content %}
+<div class="container-fluid card login-card">
+    <div class="login-form">
+        <h1>Log in</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group"><label class="control-label" for="id_username">Username</label><input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" class="form-control" placeholder="Username" title="" required id="id_username"></div>
+            <div class="form-group"><label class="control-label" for="id_password">Password</label><input type="password" name="password" autocomplete="current-password" class="form-control" placeholder="Password" title="" required id="id_password"></div>
+            <div class="login-btn">
+                <a href="/" class="btn teal-border" style="margin-left:0px ;">Cancel</a>
+                <input type="submit" class="btn teal-full" value="Login">    
+            </div>
+        </form>
+    </div> 
+</div>
+
+{% endblock %}
