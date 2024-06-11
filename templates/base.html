@@ -40,40 +40,27 @@
 
       <div class="logo">
         {% comment %} <h1 class="text-light"><a href="index.html"><span>Tash & Thabs</span></a></h1> {% endcomment %}
-        <a href="{% static 'home' %}" class="logo"><img src="{% static 'img/logo.png' %}" alt="image not available"></a>
+        <a href="{% url 'home' %}" class="logo"><img src="{% static 'img/logo.png' %}" alt="image not available"></a>
 
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active " href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact Us</a></li>
-          {% comment %} <li><span class="separator">|</span></li> {% endcomment %}
-          <li><a href="login.html">login</a></li>
-          <li><a href="signup.html">signup</a></li>
-          {% comment %} <li><a href="logout.html"></a>Logout</li> {% endcomment %}
+          <li><a class="active" href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'gallary' %}">Gallary</a></li>
+          <li><a href="{% url 'team' %}">Team</a></li>
+          <li><a href="{% url 'blog' %}">Blog</a></li>
+          <li><a href="{% url 'contacts' %}">Contact Us</a></li>
+          <li><span class="separator">|</span></li>
+          <li><a href="{% url 'accounts:login' %}">login</a></li>
+          <li><a href="{% url 'accounts:signup' %}">signup</a></li>
+          
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'accounts:logout' %}"></a>Logout</li>
+          {% endif %}
+            
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -88,16 +75,16 @@
       <!-- Slide 1 -->
       <div class="carousel-item active">
         <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Moderna</span></h2>
-          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-          <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+          <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Tash & Thabs</span></h2>
+          <p class="animate__animated animate__fadeInUp">Discover a wide range of beautiful art, custom photo frames, and professional image services. Enhance your space with unique artworks and personalized framing solutions. visit our online market today for the wide range of: art, photo frames, image services, custom framing, artwork, picture frames, professional framing, photography services, canvas prints, art prints, bespoke frames</p>
+          <a href="" class="btn-get-started animate__animated animate__fadeInUp">Join now</a>
         </div>
       </div>
 
       <!-- Slide 2 -->
       <div class="carousel-item">
         <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
+          <h2 class="animate__animated animate__fadeInDown">Visit our markets today</h2>
           <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
           <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
         </div>
@@ -106,7 +93,7 @@
       <!-- Slide 3 -->
       <div class="carousel-item">
         <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
+          <h2 class="animate__animated animate__fadeInDown">Signup for free photoshoot</h2>
           <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
           <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
         </div>
