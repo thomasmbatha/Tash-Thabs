@@ -28,6 +28,8 @@
   <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
+    <!--  -->  
+
   <!-- Template Main CSS File -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
@@ -52,6 +54,23 @@
           <li><a href="{% url 'gallary' %}">Gallary</a></li>
           <li><a href="{% url 'team' %}">Team</a></li>
           <li><a href="{% url 'blog' %}">Blog</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
           <li><a href="{% url 'contacts' %}">Contact Us</a></li>
           <li><span class="separator">|</span></li>
           <li><a href="{% url 'accounts:login' %}">login</a></li>
