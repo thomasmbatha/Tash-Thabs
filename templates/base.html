@@ -37,8 +37,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
-    <div class="container d-flex justify-content-between align-items-center">
+  <header id="header" class="fixed-top d-flex align-items-center {% block header_class %}{% endblock %}">    <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
         {% comment %} <h1 class="text-light"><a href="index.html"><span>Tash & Thabs</span></a></h1> {% endcomment %}
@@ -48,12 +47,12 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active" href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'services' %}">Services</a></li>
-          <li><a href="{% url 'gallary' %}">Gallary</a></li>
-          <li><a href="{% url 'team' %}">Team</a></li>
-          <li><a href="{% url 'blog' %}">Blog</a></li>
+          <li><a class="{% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a></li>
+          <li><a class="{% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+          <li><a class="{% if request.path == '/services/' %}active{% endif %}" href="{% url 'services' %}">Services</a></li>
+          <li><a class="{% if request.path == '/gallary/' %}active{% endif %}" href="{% url 'gallary' %}">Gallary</a></li>
+          <li><a class="{% if request.path == '/team/' %}active{% endif %}" href="{% url 'team' %}">Team</a></li>
+          <li><a class="{% if request.path == '/blog/' %}active{% endif %}" href="{% url 'blog' %}">Blog</a></li>
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -73,8 +72,8 @@
           </li>
           <li><a href="{% url 'contacts' %}">Contact Us</a></li>
           <li><span class="separator">|</span></li>
-          <li><a href="{% url 'accounts:login' %}">login</a></li>
-          <li><a href="{% url 'accounts:signup' %}">signup</a></li>
+          <li><a class="{% if request.path == '/accounts/login/' %}active{% endif %}" href="{% url 'accounts:login' %}">login</a></li>
+          <li><a class="{% if request.path == '/accounts/signup/' %}active{% endif %}" href="{% url 'accounts:signup' %}">signup</a></li>
           
           {% if user.is_authenticated %}
           <li><a href="{% url 'accounts:logout' %}"></a>Logout</li>

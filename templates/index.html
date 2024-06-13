@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} | Home{% endblock %}
-{% block content %}
 
-<section id="hero" class="d-flex justify-cntent-center align-items-center">
+{% block title %}Home{% endblock %}
+{% block header_class %}header-transparent{% endblock %}
+
+{% block content %}
+<section id="hero" class="d-flex justify-content-center align-items-center">
     <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
       <!-- Slide 1 -->
@@ -11,7 +13,7 @@
         <div class="carousel-container">
           <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Tash & Thabs</span></h2>
           <p class="animate__animated animate__fadeInUp">Discover a world of exquisite interior designs. Enhance your space with our unique art, custom photo frames, and professional image services. Visit our online market today to explore: art, photo frames, image services, custom framing, artwork, picture frames, professional framing, photography services, canvas prints, art prints, bespoke frames.</p>
-          <a href="" class="btn-get-started animate__animated animate__fadeInUp">Join now</a>
+          <a href="#" class="btn-get-started animate__animated animate__fadeInUp">Join now</a>
         </div>
       </div>
 
@@ -20,7 +22,7 @@
         <div class="carousel-container">
           <h2 class="animate__animated animate__fadeInDown">Transform Your Living Space</h2>
           <p class="animate__animated animate__fadeInUp">Discover innovative and stylish designs for every room. Transform your home with our expert interior design solutions and bespoke framing options.</p>
-          <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+          <a href="#" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
         </div>
       </div>
 
@@ -29,7 +31,7 @@
         <div class="carousel-container">
           <h2 class="animate__animated animate__fadeInDown">Free Design Consultation</h2>
           <p class="animate__animated animate__fadeInUp">Sign up for a free consultation with our interior design experts. Get personalized advice to elevate your home's aesthetic.</p>
-          <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+          <a href="#" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
         </div>
       </div>
 
@@ -42,151 +44,141 @@
       </a>
 
     </div>
-  </section><!-- End Hero -->
-  
+</section><!-- End Hero Section -->
 
-  <main id="main">
+<main id="main">
 
-    <!-- ======= Services Section ======= -->
-<section class="services">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
-        <div class="icon-box icon-box-pink">
-          <div class="icon"><i class="bi bi-house-door-fill"></i></div>
-          <h4 class="title"><a href="">Living Room Designs</a></h4>
-          <p class="description">Discover a range of styles to make your living room a welcoming and stylish space.</p>
+  <!-- ======= Services Section ======= -->
+  <section class="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+          <div class="icon-box icon-box-pink">
+            <div class="icon"><i class="bi bi-house-door-fill"></i></div>
+            <h4 class="title"><a href="#">Living Room Designs</a></h4>
+            <p class="description">Discover a range of styles to make your living room a welcoming and stylish space.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="icon-box icon-box-cyan">
-          <div class="icon"><i class="bx bx-bed-fill"></i></div>
-          <h4 class="title"><a href="">Bedroom Inspirations</a></h4>
-          <p class="description">Find elegant and cozy bedroom designs that create the perfect atmosphere for relaxation.</p>
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon-box icon-box-cyan">
+            <div class="icon"><i class="bx bx-bed-fill"></i></div>
+            <h4 class="title"><a href="#">Bedroom Inspirations</a></h4>
+            <p class="description">Find elegant and cozy bedroom designs that create the perfect atmosphere for relaxation.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-        <div class="icon-box icon-box-green">
-          <div class="icon"><i class="bi bi-cup-straw"></i></div>
-          <h4 class="title"><a href="">Kitchen Ideas</a></h4>
-          <p class="description">Get inspired by beautiful and functional kitchen layouts that enhance your cooking experience.</p>
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon-box icon-box-green">
+            <div class="icon"><i class="bi bi-cup-straw"></i></div>
+            <h4 class="title"><a href="#">Kitchen Ideas</a></h4>
+            <p class="description">Get inspired by beautiful and functional kitchen layouts that enhance your cooking experience.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-        <div class="icon-box icon-box-blue">
-          <div class="icon"><i class="bi bi-bathtub-fill"></i></div>
-          <h4 class="title"><a href="">Bathroom Styles</a></h4>
-          <p class="description">Explore bathroom designs that combine style and functionality for a refreshing experience.</p>
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon-box icon-box-blue">
+            <div class="icon"><i class="bi bi-bathtub-fill"></i></div>
+            <h4 class="title"><a href="#">Bathroom Styles</a></h4>
+            <p class="description">Explore bathroom designs that combine style and functionality for a refreshing experience.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section><!-- End Services Section -->
+  </section><!-- End Services Section -->
 
+  <!-- ======= Why Us Section ======= -->
+  <section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 video-box">
+          <img src="{% static 'img/why-us.jpg' %}" class="img-fluid" alt="Interior Design">
+          <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+        </div>
 
-    <!-- ======= Why Us Section ======= -->
-    <section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200">
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-6 video-box">
-            <img src="{% static 'img/why-us.jpg' %}" class="img-fluid" alt="Interior Design">
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+        <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-brush-fill"></i></div>
+            <h4 class="title"><a href="#">Unique Designs</a></h4>
+            <p class="description">Our designs are tailored to reflect your personality and style, creating unique and personalized spaces.</p>
           </div>
-
-          <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
-
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-brush-fill"></i></div>
-              <h4 class="title"><a href="">Unique Designs</a></h4>
-              <p class="description">Our designs are tailored to reflect your personality and style, creating unique and personalized spaces.</p>
-            </div>
-
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-tag-fill"></i></div>
-              <h4 class="title"><a href="">Affordable Prices</a></h4>
-              <p class="description">We offer competitive pricing without compromising on quality, ensuring you get the best value for your investment.</p>
-            </div>
-
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-tag-fill"></i></div>
+            <h4 class="title"><a href="#">Affordable Prices</a></h4>
+            <p class="description">We offer competitive pricing without compromising on quality, ensuring you get the best value for your investment.</p>
           </div>
         </div>
       </div>
-    </section><!-- End Why Us Section -->
-    
-    
+    </div>
+  </section><!-- End Why Us Section -->
 
-    <!-- ======= Features Section ======= -->
-    <section class="features">
-      <div class="container">
+  <!-- ======= Features Section ======= -->
+  <section class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Features</h2>
+        <p>Our interior design services include a range of features to enhance your living spaces and provide you with unique and stylish solutions.</p>
+      </div>
 
-        <div class="section-title">
-          <h2>Features</h2>
-          <p>Our interior design services include a range of features to enhance your living spaces and provide you with unique and stylish solutions.</p>
+      <div class="row" data-aos="fade-up">
+        <div class="col-md-5">
+          <img src="{% static 'img/custom_furniture.jpg' %}" class="img-fluid" alt="Custom Furniture">
         </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-md-5">
-            <img src="{% static 'img/custom_furniture.jpg' %}" class="img-fluid" alt="Custom Furniture">
-          </div>
-          <div class="col-md-7 pt-4">
-            <h3>Custom Furniture Design</h3>
-            <p class="fst-italic">
-              We offer bespoke furniture design services to ensure your furniture perfectly complements your space and style.
-            </p>
-            <ul>
-              <li><i class="bi bi-check"></i> Custom measurements to fit your space.</li>
-              <li><i class="bi bi-check"></i> Choice of materials and finishes.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-md-5 order-1 order-md-2">
-            <img src="{% static 'img/color_schemes.jpg' %}" class="img-fluid" alt="Color Schemes">
-          </div>
-          <div class="col-md-7 pt-5 order-2 order-md-1">
-            <h3>Personalized Color Schemes</h3>
-            <p class="fst-italic">
-              Our designers will help you choose the perfect color schemes to reflect your personality and enhance your living space.
-            </p>
-            <p>
-              We consider factors such as lighting, room size, and your preferences to create a harmonious and visually appealing color palette.
-            </p>
-          </div>
-        </div>
-        <div class="row" data-aos="fade-up">
-          <div class="col-md-5">
-            <img src="{% static 'img/space_planning.jpg' %}" class="img-fluid" alt="Space Planning">
-          </div>
-          <div class="col-md-7 pt-5">
-            <h3>Space Planning</h3>
-            <p>Our space planning services ensure your rooms are functional, efficient, and aesthetically pleasing. We maximize your space to meet your needs.</p>
-            <ul>
-              <li><i class="bi bi-check"></i> Functional layouts for better space utilization.</li>
-              <li><i class="bi bi-check"></i> Professional advice on furniture arrangement.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-md-5 order-1 order-md-2">
-            <img src="{% static 'img/decorative_accessories.jpg' %}" class="img-fluid" alt="Decorative Accessories">
-          </div>
-          <div class="col-md-7 pt-5 order-2 order-md-1">
-            <h3>Decorative Accessories</h3>
-            <p class="fst-italic">
-              Enhance your interiors with our selection of decorative accessories, from artwork to lighting, ensuring every detail complements your design.
-            </p>
-            <p>
-              Our designers help you choose the right accessories to add the perfect finishing touches to your space.
-            </p>
-          </div>
+        <div class="col-md-7 pt-4">
+          <h3>Custom Furniture Design</h3>
+          <p class="fst-italic">
+            We offer bespoke furniture design services to ensure your furniture perfectly complements your space and style.
+          </p>
+          <ul>
+            <li><i class="bi bi-check"></i> Custom measurements to fit your space.</li>
+            <li><i class="bi bi-check"></i> Choice of materials and finishes.</li>
+          </ul>
         </div>
       </div>
-    </section><!-- End Features Section -->
-    
 
-  </main><!-- End #main -->
+      <div class="row" data-aos="fade-up">
+        <div class="col-md-5 order-1 order-md-2">
+          <img src="{% static 'img/color_schemes.jpg' %}" class="img-fluid" alt="Color Schemes">
+        </div>
+        <div class="col-md-7 pt-5 order-2 order-md-1">
+          <h3>Personalized Color Schemes</h3>
+          <p class="fst-italic">
+            Our designers will help you choose the perfect color schemes to reflect your personality and enhance your living space.
+          </p>
+          <p>
+            We consider factors such as lighting, room size, and your preferences to create a harmonious and visually appealing color palette.
+          </p>
+        </div>
+      </div>
 
+      <div class="row" data-aos="fade-up">
+        <div class="col-md-5">
+          <img src="{% static 'img/space_planning.jpg' %}" class="img-fluid" alt="Space Planning">
+        </div>
+        <div class="col-md-7 pt-5">
+          <h3>Space Planning</h3>
+          <p>Our space planning services ensure your rooms are functional, efficient, and aesthetically pleasing. We maximize your space to meet your needs.</p>
+          <ul>
+            <li><i class="bi bi-check"></i> Functional layouts for better space utilization.</li>
+            <li><i class="bi bi-check"></i> Professional advice on furniture arrangement.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row" data-aos="fade-up">
+        <div class="col-md-5 order-1 order-md-2">
+          <img src="{% static 'img/decorative_accessories.jpg' %}" class="img-fluid" alt="Decorative Accessories">
+        </div>
+        <div class="col-md-7 pt-5 order-2 order-md-1">
+          <h3>Decorative Accessories</h3>
+          <p class="fst-italic">
+            Enhance your interiors with our selection of decorative accessories, from artwork to lighting, ensuring every detail complements your design.
+          </p>
+          <p>
+            Our designers help you choose the right accessories to add the perfect finishing touches to your space.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Features Section -->
+
+</main><!-- End #main -->
 
 {% endblock %}
