@@ -40,7 +40,6 @@
   <header id="header" class="fixed-top d-flex align-items-center {% block header_class %}{% endblock %}">    <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
-        {% comment %} <h1 class="text-light"><a href="index.html"><span>Tash & Thabs</span></a></h1> {% endcomment %}
         <a href="{% url 'home' %}" class="logo"><img src="{% static 'img/logo.png' %}" alt="image not available" rel="image"></a>
 
       </div>
@@ -50,7 +49,7 @@
           <li><a class="{% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a></li>
           <li><a class="{% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
           <li><a class="{% if request.path == '/services/' %}active{% endif %}" href="{% url 'services' %}">Services</a></li>
-          <li><a class="{% if request.path == '/gallary/' %}active{% endif %}" href="{% url 'gallary' %}">Gallary</a></li>
+          <li><a class="{% if request.path == '/gallery/' %}active{% endif %}" href="{% url 'gallery' %}">Gallery</a></li>
           <li><a class="{% if request.path == '/team/' %}active{% endif %}" href="{% url 'team' %}">Team</a></li>
           <li><a class="{% if request.path == '/blog/' %}active{% endif %}" href="{% url 'blog' %}">Blog</a></li>
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>

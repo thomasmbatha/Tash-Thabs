@@ -11,8 +11,11 @@ class AboutPage(TemplateView):
 class ServicesPage(TemplateView):
     template_name = 'services.html'
 
-class GallaryPage(TemplateView):
-    template_name = 'gallary.html'
+class GalleryPage(TemplateView):  # Ensure correct spelling if intended
+    template_name = 'gallery.html'
+
+class GalleryDetailsPage(TemplateView):  # Ensure correct spelling if intended
+    template_name = 'gallery_details.html'
 
 class TeamPage(TemplateView):
     template_name = 'team.html'
@@ -22,6 +25,7 @@ class BlogPage(TemplateView):
 
 class ContactPage(TemplateView):
     template_name = 'contact.html'
+
 class ExitPage(TemplateView):
     template_name = 'exit_page.html'
 
@@ -30,6 +34,5 @@ class HomePage(TemplateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return HttpResponseRedirect(reverse("exit"))
+            return HttpResponseRedirect(reverse("exit_page"))
         return super().get(request, *args, **kwargs)
-

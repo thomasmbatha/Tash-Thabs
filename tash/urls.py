@@ -24,10 +24,12 @@ urlpatterns = [
     path("welcome/", views.WelcomePage.as_view(), name="welcome_page"),
     path("about/", views.AboutPage.as_view(), name="about"),
     path("services/", views.ServicesPage.as_view(), name="services"),
-    path("gallary/", views.GallaryPage.as_view(), name="gallary"),
+    path("gallery/", views.GalleryPage.as_view(), name="gallery"),
+    path("gallery_details/", views.GalleryDetailsPage.as_view(), name="gallery_details"),
     path("team/", views.TeamPage.as_view(), name="team"),
     path("blog/", views.BlogPage.as_view(), name="blog"),
     path("contacts/", views.ContactPage.as_view(), name="contacts"),
     path("exit/", views.ExitPage.as_view(), name="exit_page"),
     path("accounts/", include("accounts.urls", namespace="accounts")),
-    path("accounts/", include("django.contrib.auth.urls")),]
+    path("auth/", include("django.contrib.auth.urls")),
+]
