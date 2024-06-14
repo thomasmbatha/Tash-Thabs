@@ -11,11 +11,14 @@ class AboutPage(TemplateView):
 class ServicesPage(TemplateView):
     template_name = 'services.html'
 
-class GalleryPage(TemplateView):  # Ensure correct spelling if intended
+class GalleryPage(TemplateView):
     template_name = 'gallery.html'
 
-class GalleryDetailsPage(TemplateView):  # Ensure correct spelling if intended
+class GalleryDetailsPage(TemplateView):
     template_name = 'gallery_details.html'
+
+class BlogSinglePage(TemplateView):
+    template_name = 'blog_single.html'
 
 class TeamPage(TemplateView):
     template_name = 'team.html'

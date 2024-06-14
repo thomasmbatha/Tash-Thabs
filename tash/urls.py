@@ -26,6 +26,7 @@ urlpatterns = [
     path("services/", views.ServicesPage.as_view(), name="services"),
     path("gallery/", views.GalleryPage.as_view(), name="gallery"),
     path("gallery_details/", views.GalleryDetailsPage.as_view(), name="gallery_details"),
+    path("blog_single/", views.BlogSinglePage.as_view(), name="blog_single"),
     path("team/", views.TeamPage.as_view(), name="team"),
     path("blog/", views.BlogPage.as_view(), name="blog"),
     path("contacts/", views.ContactPage.as_view(), name="contacts"),
