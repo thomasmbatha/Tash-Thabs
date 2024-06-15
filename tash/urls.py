@@ -33,4 +33,5 @@ urlpatterns = [
     path("exit/", views.ExitPage.as_view(), name="exit_page"),
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("auth/", include("django.contrib.auth.urls")),
+    path('', include('blog.urls')),
 ]
