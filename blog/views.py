@@ -1,34 +1,12 @@
 
 # Blog views
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from .forms import PhotoForm
 from django.http import HttpResponse
-from . models import Post
+from . models import Post, Photo  
+
 # Create your views here.
-
-posts = [
-    {
-        # 'img': 'image-1.png ',
-        'author': 'Thabo Mbatha',
-        'title': 'Blog Post 1',
-        'content': 'This is my first blog post',
-        'date_posted': '15th June 2024',
-        # 'comments_no': '12 comments',
-        # 'Button': 'Read More',
-        # 'quote': 'The best interiors'
-    },  
-    {
-        # 'image': 'image-2.png ',
-        'author': 'Thomas Tash',
-        'title': 'Blog Post 2',
-        'content': 'This is my second blog post',
-        'date_posted': '16th June 2024',
-        # 'comments': '12 comments',
-        # 'Button': 'Read More',
-        # 'quote': 'The best interiors in the world'
-
-    },
-]
 
 def BlogHome(request):
     context = {
@@ -38,3 +16,16 @@ def BlogHome(request):
 
 def BlogAbout(request):
     return render(request, 'blog/blog_about.html',{'title': "About Page"})
+
+def UploadPhoto(request):
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('blog/blog_home.html')  # Redirect to a page that lists uploaded photos
+    else:
+        form = PhotoForm()
+    return render(request, 'blog/uploads.html', {'form': form})
+
+def PhotoList(request):
+    return render(request, 'blog/blog_home.html', {'\photos': Post})

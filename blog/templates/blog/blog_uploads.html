@@ -1,0 +1,10 @@
+<!-- templates/upload_photo.html -->
+{% extends "blog/blog_base.html" %}
+{% block content %}
+    <h1>Upload Photo</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+{% endblock %}

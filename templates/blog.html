@@ -35,7 +35,7 @@
 
               {% for posts in posts %}
                 <div class="entry-img">
-                  <img src="{{ image.posts }}" alt="" class="img-fluid">
+                  <img src="{{ posts.image.url }}" alt="{{ posts.title }}" class="img-fluid">
                 </div>
 
                 <h2 class="entry-title">
