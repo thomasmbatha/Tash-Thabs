@@ -1,0 +1,91 @@
+{% comment %} 
+
+# myapp/forms.py
+
+from django import forms
+from .models import Photo
+
+class PhotoForm(forms.ModelForm):
+    class Meta:
+        model = Photo
+        fields = ['title', 'image']
+
+
+
+
+
+        # myapp/views.py
+
+from django.shortcuts import render, redirect
+from .forms import PhotoForm
+
+def upload_photo(request):
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('photo_list')  # Redirect to a page that lists uploaded photos
+    else:
+        form = PhotoForm()
+    return render(request, 'upload_photo.html', {'form': form})
+
+def photo_list(request):
+    photos = Photo.objects.all()
+    return render(request, 'photo_list.html', {'photos': photos})
+
+
+
+
+
+    <!-- templates/upload_photo.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Photo</title>
+</head>
+<body>
+    <h1>Upload Photo</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
+
+
+
+<!-- templates/photo_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo List</title>
+</head>
+<body>
+    <h1>Photo List</h1>
+    <ul>
+        {% for photo in photos %}
+        <li>
+            <h2>{{ photo.title }}</h2>
+            <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+# myapp/urls.py
+
+from django.urls import path
+from .views import upload_photo, photo_list
+
+urlpatterns = [
+    path('upload/', upload_photo, name='upload_photo'),
+    path('', photo_list, name='photo_list'),
+]
+
+{% endcomment %}
