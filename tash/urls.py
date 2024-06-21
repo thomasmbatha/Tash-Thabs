@@ -33,4 +33,5 @@ urlpatterns = [
     path("blog/", views.BlogPage.as_view(), name="blog"),
     path("contacts/", views.ContactPage.as_view(), name="contacts"),
     path("exit/", views.ExitPage.as_view(), name="exit_page"),
+    path("blog",include('blog.urls'))
 ]
