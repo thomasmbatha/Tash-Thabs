@@ -33,10 +33,4 @@ urlpatterns = [
     path("blog/", views.BlogPage.as_view(), name="blog"),
     path("contacts/", views.ContactPage.as_view(), name="contacts"),
     path("exit/", views.ExitPage.as_view(), name="exit_page"),
-    path("accounts/", include("accounts.urls", namespace="accounts")),
-    path("auth/", include("django.contrib.auth.urls")),
-    path('', include('blog.urls')),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
