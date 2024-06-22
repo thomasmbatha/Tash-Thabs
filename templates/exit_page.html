@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | Exit{% endblock %}
+{% block header_class %}header-transparent{% endblock %}
+{% block content %}
+<main id="main">
+
+    <!-- ======= Exit Section ======= -->
+      <section class="breadcrumbs">
+        <div class="container">
+  
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>Exit</h2>
+  
+            <ol>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li>Exit</li>
+            </ol>
+          </div>
+  
+        </div>
+      </section>
+  
+      <!-- ======= Exit Section ======= -->
+{% endblock %}

@@ -1,3 +1,4 @@
+# settings.py
 """
 Django settings for tash project.
 
@@ -39,8 +40,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "crispy_bootstrap5",
+    "crispy_forms",
+    "tinymce",
     "accounts",
     "blog",
+    
 
     #own
 ]
@@ -128,3 +133,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = "blog_home"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
