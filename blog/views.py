@@ -10,3 +10,4 @@ class BlogHome(ListView):
     model = Article
     queryset = Article.objects.all().order_by('-date')
     template_name = 'blog/blog_home.html'
+    paginate_by = 1

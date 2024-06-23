@@ -5,4 +5,3 @@ from .models import Article
 # Register your models here.
 
 admin.site.register(Article)
-#1:03:29___error check

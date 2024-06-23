@@ -33,13 +33,12 @@
 
             <article class="entry">
 
-              {% for posts in posts %}
                 <div class="entry-img">
-                  <img src="{{ posts.image.url }}" alt="{{ posts.title }}" class="img-fluid">
+                 <img src="{% static 'img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
                 </div>
 
                 <h2 class="entry-title">
-                  <a href="{% url 'blog_single' %}">{{ posts.title }}</a>
+                  <a href="{% url 'blog_single' %}"></a>
                 </h2>
 
                 <div class="entry-meta">
@@ -59,7 +58,6 @@
                     <a href="{% url 'blog_single' %}">Read More</a>
                   </div>
                 </div>
-              {% endfor %}
 
             </article><!-- End blog entry -->
 
