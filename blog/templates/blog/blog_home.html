@@ -21,7 +21,7 @@
             <div class="my-3">
                 {{ object.content|truncatewords_html:50|safe }}
             </div>
-            <a href="#">Read more</a>
+            <a href="{% url 'detail_article' object.id %}">Read more</a>
         </div>
     </div>
     {% endfor %}
@@ -53,4 +53,3 @@
     </nav>
 {% endblock %}
 
-{% comment %} 1:22:56 / 2:18:25 ___ 55min Build a Blog using Django, Python, and Bootstrap {% endcomment %}
