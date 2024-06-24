@@ -15,3 +15,13 @@ class BlogHome(ListView):
 class DetailArcticleView(DetailView):
     model = Article
     template_name = 'blog/blog_post.html'
+
+class LikeArticle(View):
+    def post(self, request, pk):
+        article = Article.objects.get(id=pk)
+        if article.likes.filter(pk=self.request.user.id).exists():
+            article.likes.remove(request.user.id)
+        else:
+            article.likes.add(request.user.id)
+
+            # 1:35:45 
