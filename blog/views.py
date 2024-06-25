@@ -1,15 +1,11 @@
 # blog/views.py
-from typing import Any
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.views.generic import ListView, DetailView, DeleteView
-from django.views.generic.edit import CreateView
-from .forms import ArticleForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Article
-# Create your views here.
-
+from .models import Article, Comment
+from .forms import ArticleForm, CommentForm
 
 class BlogHome(ListView):
     model = Article
@@ -22,6 +18,7 @@ class Featured(ListView):
     queryset = Article.objects.filter(featured=True).order_by('-date')
     template_name = 'blog/featured.html'
     paginate_by = 4
+
 class DetailArcticleView(DetailView):
     model = Article
     template_name = 'blog/blog_post.html'
@@ -32,8 +29,10 @@ class DetailArcticleView(DetailView):
         article = Article.objects.get(id=self.kwargs.get('pk'))
         if article.likes.filter(pk=self.request.user.id).exists():
             context['liked_by_user'] = True
+        context['comments'] = Comment.objects.filter(article=article).order_by('-date')
+        context['comment_form'] = CommentForm()
+        context['comment_count'] = Comment.objects.filter(article=article).count()
         return context
-
 
 class LikeArticle(View):
     def post(self, request, pk):
@@ -53,7 +52,7 @@ class DeleteArticleView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         article = Article.objects.get(id=self.kwargs.get('pk'))
         return self.request.user.id == article.author.id
-    
+
 class CreateArticleView(LoginRequiredMixin, View):
     def get(self, request):
         form = ArticleForm()
@@ -67,3 +66,14 @@ class CreateArticleView(LoginRequiredMixin, View):
             article.save()
             return redirect('blog_home')
         return render(request, 'blog/blog_create.html', {'form': form})
+
+class AddCommentView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        article = get_object_or_404(Article, pk=pk)
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.article = article
+            comment.author = request.user
+            comment.save()
+        return redirect('detail_article', pk)

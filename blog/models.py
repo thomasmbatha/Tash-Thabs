@@ -13,3 +13,12 @@ class Article(models.Model):
     featured = models.BooleanField(default=False)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
+
+class Comment(models.Model):
+    article = models.ForeignKey(Article, related_name='comments', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"Comment by {self.author} on {self.article}"
