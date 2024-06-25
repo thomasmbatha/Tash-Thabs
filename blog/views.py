@@ -2,7 +2,9 @@
 from typing import Any
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Article
 # Create your views here.
 
@@ -40,3 +42,8 @@ class LikeArticle(View):
             article.likes.add(request.user.id)
         article.save()
         return redirect('detail_article', pk)
+    
+class DeleteArticleView(LoginRequiredMixin, DeleteView):
+    model = Article
+    template_name = 'blog/blog_delete.html'
+    success_url = reverse_lazy('blog_home')
