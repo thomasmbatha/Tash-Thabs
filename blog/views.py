@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Article
 # Create your views here.
 
@@ -43,7 +43,11 @@ class LikeArticle(View):
         article.save()
         return redirect('detail_article', pk)
     
-class DeleteArticleView(LoginRequiredMixin, DeleteView):
+class DeleteArticleView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Article
     template_name = 'blog/blog_delete.html'
     success_url = reverse_lazy('blog_home')
+
+    def test_func(self):
+        article = Article.objects.get(id=self.kwargs.get('pk'))
+        return self.request.user.id == article.author.id
