@@ -54,12 +54,16 @@ class DeleteArticleView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         article = Article.objects.get(id=self.kwargs.get('pk'))
         return self.request.user.id == article.author.id
     
-class CreateArticleView(LoginRequiredMixin, CreateView):
-    model = Article
-    form_class = ArticleForm
-    template_name = 'blog/blog_create.html'
-    success_url = reverse_lazy('blog_home')
+class CreateArticleView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = ArticleForm()
+        return render(request, 'blog/blog_create.html', {'form': form})
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+    def post(self, request):
+        form = ArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.author = request.user
+            article.save()
+            return redirect('blog_home')
+        return render(request, 'blog/blog_create.html', {'form': form})
