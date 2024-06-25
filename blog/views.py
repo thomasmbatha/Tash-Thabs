@@ -3,6 +3,8 @@ from typing import Any
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView, DetailView, DeleteView
+from django.views.generic.edit import CreateView
+from .forms import ArticleForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Article
@@ -13,13 +15,13 @@ class BlogHome(ListView):
     model = Article
     queryset = Article.objects.all().order_by('-date')
     template_name = 'blog/blog_home.html'
-    paginate_by = 1
+    paginate_by = 4
 
 class Featured(ListView):
     model = Article
     queryset = Article.objects.filter(featured=True).order_by('-date')
     template_name = 'blog/featured.html'
-    paginate_by = 1
+    paginate_by = 4
 class DetailArcticleView(DetailView):
     model = Article
     template_name = 'blog/blog_post.html'
@@ -51,3 +53,13 @@ class DeleteArticleView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         article = Article.objects.get(id=self.kwargs.get('pk'))
         return self.request.user.id == article.author.id
+    
+class CreateArticleView(LoginRequiredMixin, CreateView):
+    model = Article
+    form_class = ArticleForm
+    template_name = 'blog/blog_create.html'
+    success_url = reverse_lazy('blog_home')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
