@@ -1,20 +1,19 @@
-{% comment %} {% extends "blog/blog_base.html" %} {% endcomment %}
+{% extends "blog/blog_base.html" %}
 
-{% comment %} {% block content %} {% endcomment %}
-    {% comment %} <div class="row">
+{% block content %}
+    <div class="row">
         <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-5">
             <h1 class="fw-bolder">Django Blog</h1>
             <h5 class="text-muted">A blog about Django and Python</h5>
             <a href="{% url 'create_article' %}" class="btn btn-success mt-3">Create New Post</a>
         </div>
-    </div> {% endcomment %}
-
-    {% comment %} {% for object in object_list %}
+    </div>
+    {% for object in object_list %}
     <div class="row">
         <div class="col-md-6 col-11 mx-md-auto mx-3 mt-5 mb-5">
             {% if object.image %}
                 <img src="{{ object.image.url }}" class="img-fluid" alt="{{ object.title }}">
-            {% endif %} {% endcomment %}
+            {% endif %}
             <h3 class="fw-bold">{{ object.title }}</h3>
             <p class="text-muted">{{ object.date }}</p>
             <p class="text-muted">Posted by {{ object.author.username }}</p>
