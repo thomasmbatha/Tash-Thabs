@@ -1,29 +1,29 @@
-{% extends "blog/blog_base.html" %}
+{% comment %} {% extends "blog/blog_base.html" %}
 
 {% block content %}
 <div class="row">
     <div class="col-md-4 col-12 mx-md-5 mx-2 mt-md-3 my-3">
         <a href="{% url 'blog_home' %}" class="btn btn-outline-secondary">Go Back</a>
     </div>
-</div>
-<div class="row">
+</div> {% endcomment %}
+{% comment %} <div class="row">
     <div class="col-md-6 col-11 mx-md-auto mb-3 pb-2 mx-3">
-        <h1>{{ object.title }}</h1>
-        <p class="text-muted">{{ object.date }}</p>
-        <p class="text-muted">Posted by {{ object.author.username }}</p>
-        {% if object.image %}
+        <h1>{{ object.title }}</h1> {% endcomment %}
+        {% comment %} <p class="text-muted">{{ object.date }}</p> {% endcomment %}
+        {% comment %} <p class="text-muted">Posted by {{ object.author.username }}</p> {% endcomment %}
+        {% comment %} {% if object.image %}
             <img src="{{ object.image.url }}" class="img-fluid" alt="{{ object.title }}">
-        {% endif %}
-        {% if request.user.username == object.author.username %}
+        {% endif %} {% endcomment %}
+        {% comment %} {% if request.user.username == object.author.username %}
             <div class="pb-3">
                 <a href="{% url 'delete_article' object.pk %}">Delete this post</a>
             </div>
-        {% endif %}
-        <div>
+        {% endif %} {% endcomment %}
+        {% comment %} <div>
             {{ object.content|safe }}
         </div>
-    </div>
-</div>
+    </div> {% endcomment %}
+{% comment %} </div> {% endcomment %}
 <div class="row mx-md-0 px-3">
     <div class="col-md-6 col-12 mx-md-auto mx-3">
         {% if object.likes.count == 1 %}
@@ -48,18 +48,22 @@
         {% endif %}
     </div>
 </div>
+{% comment %}  {% endcomment %}
+{% comment %}  {% endcomment %}
+{% comment %}  {% endcomment %}
+{% comment %}  {% endcomment %}
 
-<div class="row mx-md-0 px-3 mt-5">
+{% comment %} <div class="row mx-md-0 px-3 mt-5">
     <div class="col-md-6 col-12 mx-md-auto mx-3">
-        <h3>Comments ({{ comment_count }})</h3>
-        {% for comment in comments %}
+        <h3>Comments ({{ comment_count }})</h3> {% endcomment %}
+        {% comment %} {% for comment in comments %}
             <div class="mb-2">
                 <p><strong>{{ comment.author.username }}</strong> - {{ comment.date|date:"F j, Y, g:i a" }}</p>
                 <p>{{ comment.content }}</p>
             </div>
         {% endfor %}
     </div>
-</div>
+</div> {% endcomment %}
 
 <div class="row mx-md-0 px-3 mt-3">
     <div class="col-md-6 col-12 mx-md-auto mx-3">

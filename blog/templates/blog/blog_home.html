@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} | Blog{% endblock %}
+{% block title %} | Blog Post{% endblock %}
 
 {% block content %}
 <main id="main">
@@ -38,7 +38,7 @@
                     {% endif %}
 
                     <h2 class="entry-title">
-                    <a href="{% url 'blog_single' %}">{{ object.title }}</a>
+                    <a>{{ object.title }}</a>
                     </h2>
 
                     <div class="entry-meta">
