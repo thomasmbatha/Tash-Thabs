@@ -149,24 +149,24 @@
             <div class="reply-form">
               <h4>Leave a Comment</h4>
               {% if request.user.is_authenticated %}
-              <form method="post" action="{% url 'add_comment' object.id %}">
-                {% csrf_token %}
-                {% comment %} <div class="row">
-                  <div class="col-md-6 form-group">
-                    <input name="name" type="text" class="form-control" placeholder="Your Name*">
+                <form method="post" action="{% url 'add_comment' object.id %}">
+                  {% csrf_token %}
+                  <div class="row">
+                    {% for field in comment_form %}
+                        {% if field.name == 'comment' %}
+                      <div class="col form-group">
+                          <textarea name="{{ field.name }}" class="form-control" placeholder="Your Comment*" rows="4">{{ field.value }}</textarea>
+                        {% else %}
+                          {{ field }}
+                        {% endif %}
+                      </div>
+                    {% endfor %}
                   </div>
-                  <div class="col-md-6 form-group">
-                    <input name="email" type="text" class="form-control" placeholder="Your Email*">
-                  </div>
-                </div> {% endcomment %}
-                <div class="row">
-                  <div class="col form-group">
-                    <textarea name="comment" class="form-control" placeholder="Your Comment*">{{ comment_form.as_p }}</textarea>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Post Comment</button>
-              </form>               
+                  <button type="submit" class="btn btn-primary">Post Comment</button>
+                </form>
               {% endif %}
+
+            
                 
 
             </div>
