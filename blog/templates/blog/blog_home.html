@@ -62,17 +62,49 @@
                 </article><!-- End blog entry -->
                 {% endfor %}
                 <div class="blog-pagination">
-                <ul class="justify-content-center">
-                {% if page_obj.has_previous %}
-                    <li><a class="{% if request.path == '/?page=1' %}active{% endif %}" href="?page=1">&laquo;{{ page_obj.number }}</a></li>
-                {% endif %}
-                    <li class="active"><a href="#">{{ page_obj.number }}</a></li>
-                {% if page_obj.has_next %}
-                    <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.number }}</a></li>
-                {% endif %}
-                </ul>
+                    <ul class="justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                        {% endif %}
+                
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == 1 %}
+                                {# If on the first page, show the first 3 pages #}
+                                {% if num <= 3 %}
+                                    {% if page_obj.number == num %}
+                                        <li class="active"><a href="?page={{ num }}">{{ num }}</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ num }}">{{ num }}</a></li>
+                                    {% endif %}
+                                {% endif %}
+                            {% elif page_obj.number == page_obj.paginator.num_pages %}
+                                {# If on the last page, show the last 3 pages #}
+                                {% if num >= page_obj.paginator.num_pages|add:'-2' %}
+                                    {% if page_obj.number == num %}
+                                        <li class="active"><a href="?page={{ num }}">{{ num }}</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ num }}">{{ num }}</a></li>
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                {# Otherwise, show the current page in the middle with 1 page on each side #}
+                                {% if num >= page_obj.number|add:'-1' and num <= page_obj.number|add:'1' %}
+                                    {% if page_obj.number == num %}
+                                        <li class="active"><a href="?page={{ num }}">{{ num }}</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ num }}">{{ num }}</a></li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
-                {% comment %} {% endfor %} {% endcomment %}
+                
+                </div>
             </div><!-- End blog entries list -->
 
             <div class="col-lg-4">
