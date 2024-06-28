@@ -55,28 +55,28 @@
 
 {% comment %} <div class="row mx-md-0 px-3 mt-5">
     <div class="col-md-6 col-12 mx-md-auto mx-3">
-        <h3>Comments ({{ comment_count }})</h3> {% endcomment %}
-        {% comment %} {% for comment in comments %}
+        <h3>Comments ({{ comment_count }})</h3>
+        {% for comment in comments %}
             <div class="mb-2">
                 <p><strong>{{ comment.author.username }}</strong> - {{ comment.date|date:"F j, Y, g:i a" }}</p>
                 <p>{{ comment.content }}</p>
             </div>
         {% endfor %}
     </div>
-</div> {% endcomment %}
+</div>
 
 <div class="row mx-md-0 px-3 mt-3">
-    <div class="col-md-6 col-12 mx-md-auto mx-3">
-        <h4>Leave a Comment</h4>
-        {% if request.user.is_authenticated %}
-            <form method="post" action="{% url 'add_comment' object.id %}">
-                {% csrf_token %}
-                {{ comment_form.as_p }}
+    <div class="col-md-6 col-12 mx-md-auto mx-3"> {% endcomment %}
+        {% comment %} <h4>Leave a Comment</h4> {% endcomment %}
+        {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
+            {% comment %} <form method="post" action="{% url 'add_comment' object.id %}"> {% endcomment %}
+                {% comment %} {% csrf_token %} {% endcomment %}
+                {% comment %} {{ comment_form.as_p }}
                 <button type="submit" class="btn btn-primary">Submit Comment</button>
             </form>
         {% else %}
             <p>Please <a href="{% url 'login' %}">login</a> to leave a comment.</p>
-        {% endif %}
+        {% endif %} {% endcomment %}
     </div>
 </div>
 {% endblock %}
