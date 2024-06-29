@@ -1,14 +1,43 @@
-{% extends "blog/blog_base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | Blog{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-5">
-        <h1 class="fw-bolder">Create a New Post</h1>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Create Post</button>
-        </form>
+<main id="main">
+
+  <!-- ======= Blog Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Blog</h2>
+
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>Blog</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Blog Section -->
+    
+    <div class="row">
+        <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-5">
+            <h1 class="fw-bolder">Create a New Post</h1>
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrfmiddlewaretoken" value="RMXGt0AK8mMveZ6UhXCPOIm6JtGeMC17IAZsfox5BX1iuMl34KpvD5sKpdyOYllv">
+                <p><label for="id_title">Title:</label> <input type="text" name="title" maxlength="255" required id="id_title"></p>
+                <p><label for="id_content">Content:</label>
+                <textarea class="tinymce4-editor" cols="40" id="id_content" name="content" rows="10" required></textarea>
+                <script type="text/javascript">(function($){function tinymce4_init(selector){var tinymce4_config={setup:function(editor){editor.on('change',function(){editor.save();});},"selector":"textarea#id_content","theme":"modern","plugins":"link image preview codesample contextmenu table code lists","toolbar1":"formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | table | link image | codesample | preview code","contextmenu":"formats | link image","menubar":false,"inline":false,"statusbar":true,"width":"auto","height":360,"language":"en","directionality":"ltr"};if(typeof selector!='undefined'){tinymce4_config['selector']=selector;}
+                tinymce.init(tinymce4_config);}
+                tinymce4_init();})();</script></p>
+                <p><label for="id_image">Image:</label> <input type="file" name="image" accept="image/*" id="id_image"></p>
+                <p><label for="id_featured">Featured:</label> <input type="checkbox" name="featured" id="id_featured"></p>
+                <button type="submit" class="btn btn-primary">Create Post</button>
+            </form>
+        </div>
     </div>
-</div>
+
 {% endblock %}
