@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% load tz %}
-
 {% load static %}
 
-{% block title %} | Blog Details{% endblock %}
+{% load tz %}
+
+{% block title %} | Posts{% endblock %}
 
 {% block content %}
 
@@ -54,9 +54,9 @@
 
             <div class="entry-meta">
               <ul>
-                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{ object.author.username }}</a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{ object.date }}</time></a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">{{ comment_count }} Comments</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">{{ object.author.username }}</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">{{ object.date }}</time></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">{{ comment_count }} Comments</a></li>
               </ul>
             </div>
 

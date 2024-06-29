@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
+
 {% load static %}
+
+{% load tz %}
 
 {% block title %} | Blog{% endblock %}
 
@@ -43,11 +46,11 @@
                     </h2>
 
                     <div class="entry-meta">
-                    <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="">{{ object.author.username }}</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href=""><time datetime="2020-01-01">{{ object.date }}</time></a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="">{{ comment_count }} Comments</a></li>
-                    </ul>
+                        <ul>
+                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">{{ object.author.username }}</a></li>
+                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">{{ object.date }}</time></a></li>
+                            <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">{{ comment_count }} Comments</a></li>
+                        </ul>
                     </div>
 
                     <div class="entry-content">
