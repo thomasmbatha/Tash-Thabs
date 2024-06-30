@@ -13,18 +13,23 @@ class BlogHome(ListView):
     template_name = 'blog/blog_home.html'
     paginate_by = 4
 
-class Featured(ListView):
+class LivingRoomPosts(ListView):
     model = Article
-    queryset = Article.objects.filter(featured=True).order_by('-date')
-    template_name = 'blog/featured.html'
+    queryset = Article.objects.filter(living=True).order_by('-date')
+    template_name = 'blog/blog_living.html'
     paginate_by = 4
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['living_count'] = self.get_queryset().count()  # Count living room posts
+        return context
 
 class DetailArcticleView(DetailView):
     model = Article
     template_name = 'blog/blog_post.html'
 
     def get_context_data(self, *args, **kwargs):
-        context = super(DetailArcticleView, self).get_context_data(*args, **kwargs)
+        context = super().get_context_data(*args, **kwargs)
         context['liked_by_user'] = False
         article = Article.objects.get(id=self.kwargs.get('pk'))
         if article.likes.filter(pk=self.request.user.id).exists():
@@ -32,6 +37,10 @@ class DetailArcticleView(DetailView):
         context['comments'] = Comment.objects.filter(article=article).order_by('-date')
         context['comment_form'] = CommentForm()
         context['comment_count'] = Comment.objects.filter(article=article).count()
+
+        # Add living room posts count
+        context['living_count'] = Article.objects.filter(living=True).count()
+
         return context
 
 class LikeArticle(View):
