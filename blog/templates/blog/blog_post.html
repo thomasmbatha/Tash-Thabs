@@ -154,7 +154,7 @@
       <div class="form-group">
         {% for field in comment_form %}
           {% if field.name == 'comment' %}
-            <textarea name="{{ field.name }}" class="form-control w-100" placeholder="Your Comment*" rows="4">{{ field.value }}</textarea>
+            <textarea name="{{ field.name }}" class="form-control" placeholder="Your Comment*">{{ field.value }}</textarea>
           {% else %}
             {{ field }}
           {% endif %}
