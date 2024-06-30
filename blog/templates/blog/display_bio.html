@@ -1,0 +1,23 @@
+<!-- Example in blog_post.html or any relevant template -->
+{% block content %}
+<main id="main">
+    <!-- Your existing content -->
+
+    <section id="user-info">
+        <div class="container" data-aos="fade-up">
+            <h3>User Info</h3>
+            <div class="user-info-content">
+                <p>Username: {{ request.user.username }}</p>
+                {% if user_bio %}
+                <p>Bio: {{ user_bio.bio }}</p>
+                {% if user_bio.profile_picture %}
+                <img src="{{ user_bio.profile_picture.url }}" alt="Profile Picture">
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- More of your existing content -->
+</main>
+{% endblock %}

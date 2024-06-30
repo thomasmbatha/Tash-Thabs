@@ -64,7 +64,9 @@
           </article><!-- End blog entry -->
 
           <div class="blog-author d-flex align-items-center">
-            <img src="{% static 'img/blog/blog-author.jpg' %}" class="rounded-circle float-left" alt="">
+            {% if user_bio.profile_picture %}
+            <img src="{{ user_bio.profile_picture.url }}" class="rounded-circle float-left" alt="Profile Picture">
+            {% endif %}
             <div>
               <h4>{{ object.author.username }}</h4>
               <div class="social-links">
@@ -72,10 +74,13 @@
                 <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
                 <a href="https://instagram.com/#"><i class="bi bi-instagram"></i></a>
               </div>
+              {% if user_bio %}
               <p>
-                Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                {{ user_bio.bio }}
               </p>
+              {% endif %}
             </div>
+            <p></p>
           </div><!-- End blog author bio -->
 
           <div class="blog-comments">
@@ -83,7 +88,9 @@
             {% for comment in comments %}
               <div id="comment-1" class="comment">
                 <div class="d-flex">
-                  <div class="comment-img"><img src="{% static 'img/blog/comments-1.jpg' %}" alt=""></div>
+                 {% if user_bio.profile_picture %}
+                  <div class="comment-img"><img src="{{ user_bio.profile_picture.url }}" alt=""></div>
+                {% endif %}
                   <div>
                     <h5><a>{{ comment.author.username }}</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                     <time datetime="2020-01-01">{{ comment.date|timezone:"Africa/Johannesburg"|date:"F j, Y, g:i a" }}</time>
@@ -140,9 +147,11 @@
             <h3 class="sidebar-title">Recent Posts</h3>
             <div class="sidebar-item recent-posts">
               <div class="post-item clearfix">
-                <img src="{% static 'img/blog/blog-recent-1.jpg' %}" alt="">
-                <h4><a href="">Nihil blanditiis at in nihil autem</a></h4>
-                <time datetime="2020-01-01">Jan 1, 2020</time>
+                {% if object.image %}
+                <img src="{{ object.image.url }}" alt="content-image">
+                {% endif %}
+                <h4><a href="">{{ object.title }}</a></h4>
+                <time datetime="2020-01-01">{{ object.date }}</time>
               </div>
 
               <div class="post-item clearfix">

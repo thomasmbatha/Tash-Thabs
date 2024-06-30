@@ -4,8 +4,22 @@ from django.views import View
 from django.views.generic import ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Article, Comment
-from .forms import ArticleForm, CommentForm
+from .models import Article, Comment, Bio
+from .forms import ArticleForm, CommentForm, BioForm
+
+class BioView(LoginRequiredMixin, View):
+    def get(self, request):
+        bio, created = Bio.objects.get_or_create(user=request.user)
+        form = BioForm(instance=bio)
+        return render(request, 'blog/bio.html', {'form': form, 'bio': bio})
+
+    def post(self, request):
+        bio, created = Bio.objects.get_or_create(user=request.user)
+        form = BioForm(request.POST, request.FILES, instance=bio)
+        if form.is_valid():
+            form.save()
+            return redirect('bio')
+        return render(request, 'blog/bio.html', {'form': form, 'bio': bio})
 
 class BlogHome(ListView):
     model = Article
@@ -100,6 +114,7 @@ class DetailArcticleView(DetailView):
         context['bathroom_count'] = Article.objects.filter(bathroom=True).count()
         context['outdoor_count'] = Article.objects.filter(outdoor=True).count()
         context['office_count'] = Article.objects.filter(office=True).count()
+        context['user_bio'] = Bio.objects.get_or_create(user=self.request.user)[0]
 
         return context
 

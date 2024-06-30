@@ -1,6 +1,6 @@
 # blog/urls.py
 from django.urls import path, include
-from .views import BlogHome, DetailArcticleView, LikeArticle, LivingRoomPosts, DeleteArticleView, CreateArticleView, AddCommentView,BedroomPosts,KitchenPosts,BathroomPosts,OutdoorPosts,OfficePosts
+from .views import BlogHome, DetailArcticleView, LikeArticle, LivingRoomPosts, DeleteArticleView, CreateArticleView, AddCommentView, BedroomPosts, KitchenPosts, BathroomPosts, OutdoorPosts, OfficePosts, BioView
 
 urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
@@ -15,5 +15,6 @@ urlpatterns = [
     path('<int:pk>/like', LikeArticle.as_view(), name='like_article'),
     path('<int:pk>/delete', DeleteArticleView.as_view(), name='delete_article'),
     path('create/', CreateArticleView.as_view(), name='create_article'),
-    path('<int:pk>/comment', AddCommentView.as_view(), name='add_comment')
+    path('<int:pk>/comment', AddCommentView.as_view(), name='add_comment'),
+    path('bio/', BioView.as_view(), name='bio')
 ]
