@@ -11,6 +11,11 @@ class Article(models.Model):
     date = models.DateField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     living = models.BooleanField(default=False)
+    bedroom = models.BooleanField(default=False)
+    kitchen = models.BooleanField(default=False)
+    bathroom = models.BooleanField(default=False)
+    outdoor = models.BooleanField(default=False)
+    office = models.BooleanField(default=False)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
 

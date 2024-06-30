@@ -194,11 +194,11 @@
             <div class="sidebar-item categories">
               <ul>
                 <li><a href="{% url 'living' %}">Living Room <span>({{ living_count }})</span></a></li>
-                <li><a href="#">Bedroom <span>(12)</span></a></li>
-                <li><a href="#">Kitchen <span>(5)</span></a></li>
-                <li><a href="#">Bathroom <span>(22)</span></a></li>
-                <li><a href="#">Outdoor <span>(8)</span></a></li>
-                <li><a href="#">Office <span>(14)</span></a></li>
+                <li><a href="{% url 'bedroom' %}">Bedroom <span>({{ bedroom_count }})</span></a></li>
+                <li><a href="{% url 'kitchen' %}">Kitchen <span>({{ kitchen_count }})</span></a></li>
+                <li><a href="{% url 'bathroom' %}">Bathroom <span>({{ bathroom_count }})</span></a></li>
+                <li><a href="{% url 'outdoor' %}">Outdoor <span>({{ outdoor_count }})</span></a></li>
+                <li><a href="{% url 'office' %}">Office <span>({{ office_count }})</span></a></li>
             </ul>            
             </div><!-- End sidebar categories-->
 

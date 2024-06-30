@@ -21,8 +21,63 @@ class LivingRoomPosts(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['living_count'] = self.get_queryset().count()  # Count living room posts
+        context['living_count'] = self.get_queryset().count()
+        return context ###############
+
+class BedroomPosts(ListView):
+    model = Article
+    queryset = Article.objects.filter(bedroom=True).order_by('-date')
+    template_name = 'blog/blog_bedroom.html'
+    paginate_by = 4
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['bedroom_count'] = self.get_queryset().count()
         return context
+    
+class KitchenPosts(ListView):
+    model = Article
+    queryset = Article.objects.filter(kitchen=True).order_by('-date')
+    template_name = 'blog/blog_kitchen.html'
+    paginate_by = 4
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['kitchen_count'] = self.get_queryset().count()
+        return context
+    
+class BathroomPosts(ListView):
+    model = Article
+    queryset = Article.objects.filter(bathroom=True).order_by('-date')
+    template_name = 'blog/blog_bathroom.html'
+    paginate_by = 4
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['bathroom_count'] = self.get_queryset().count()
+        return context
+    
+class OutdoorPosts(ListView):
+    model = Article
+    queryset = Article.objects.filter(outdoor=True).order_by('-date')
+    template_name = 'blog/blog_outdoor.html'
+    paginate_by = 4
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['outdoor_count'] = self.get_queryset().count()
+        return context
+    
+class OfficePosts(ListView):
+    model = Article
+    queryset = Article.objects.filter(office=True).order_by('-date')
+    template_name = 'blog/blog_office.html'
+    paginate_by = 4
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['office_count'] = self.get_queryset().count()
+        return context ###################
 
 class DetailArcticleView(DetailView):
     model = Article
