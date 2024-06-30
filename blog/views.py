@@ -93,8 +93,13 @@ class DetailArcticleView(DetailView):
         context['comment_form'] = CommentForm()
         context['comment_count'] = Comment.objects.filter(article=article).count()
 
-        # Add living room posts count
+        # Posts count
         context['living_count'] = Article.objects.filter(living=True).count()
+        context['bedroom_count'] = Article.objects.filter(bedroom=True).count()
+        context['kitchen_count'] = Article.objects.filter(kitchen=True).count()
+        context['bathroom_count'] = Article.objects.filter(bathroom=True).count()
+        context['outdoor_count'] = Article.objects.filter(outdoor=True).count()
+        context['office_count'] = Article.objects.filter(office=True).count()
 
         return context
 
