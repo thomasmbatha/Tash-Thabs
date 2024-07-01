@@ -1,4 +1,3 @@
-# blog/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.views.generic import ListView, DetailView, DeleteView
@@ -27,6 +26,11 @@ class BlogHome(ListView):
     queryset = Article.objects.all().order_by('-date')
     template_name = 'blog/blog_home.html'
     paginate_by = 4
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['recent_posts'] = Article.objects.exclude(id__in=self.object_list.values_list('id', flat=True)).order_by('-date')[:5]
+        return context
 
 class LivingRoomPosts(ListView):
     model = Article
@@ -107,6 +111,9 @@ class DetailArcticleView(DetailView):
         context['comments'] = Comment.objects.filter(article=article).order_by('-date')
         context['comment_form'] = CommentForm()
         context['comment_count'] = Comment.objects.filter(article=article).count()
+
+        # Fetch recent posts
+        context['recent_posts'] = Article.objects.exclude(id=article.id).order_by('-date')[:5]
 
         # Posts count
         context['living_count'] = Article.objects.filter(living=True).count()

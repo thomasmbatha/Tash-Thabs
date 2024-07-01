@@ -1,4 +1,3 @@
-# blog/urls.py
 from django.urls import path, include
 from .views import (BlogHome, DetailArcticleView, LikeArticle,
                     LivingRoomPosts, DeleteArticleView, 
