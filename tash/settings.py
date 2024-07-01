@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     "accounts",
     "blog",
     
-
-    #own
 ]
 
 MIDDLEWARE = [
