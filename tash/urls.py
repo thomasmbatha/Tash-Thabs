@@ -35,5 +35,5 @@ urlpatterns = [
     path("contacts/", views.ContactPage.as_view(), name="contacts"),
     path("exit/", views.ExitPage.as_view(), name="exit_page"),
     path("blog/",include('blog.urls')),
-    path("accounts/",include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
