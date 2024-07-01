@@ -1,6 +1,10 @@
 # blog/urls.py
 from django.urls import path, include
-from .views import BlogHome, DetailArcticleView, LikeArticle, LivingRoomPosts, DeleteArticleView, CreateArticleView, AddCommentView, BedroomPosts, KitchenPosts, BathroomPosts, OutdoorPosts, OfficePosts, BioView
+from .views import (BlogHome, DetailArcticleView, LikeArticle,
+                    LivingRoomPosts, DeleteArticleView, 
+                    CreateArticleView, AddCommentView, BedroomPosts,
+                    KitchenPosts, BathroomPosts, OutdoorPosts,
+                    OfficePosts, BioView)
 
 urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
