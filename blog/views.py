@@ -4,6 +4,7 @@ from django.views import View
 from django.views.generic import ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import AnonymousUser
 from .models import Article, Comment, Bio
 from .forms import ArticleForm, CommentForm, BioForm
 
@@ -36,7 +37,7 @@ class LivingRoomPosts(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['living_count'] = self.get_queryset().count()
-        return context ###############
+        return context
 
 class BedroomPosts(ListView):
     model = Article
@@ -91,7 +92,7 @@ class OfficePosts(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['office_count'] = self.get_queryset().count()
-        return context ###################
+        return context
 
 class DetailArcticleView(DetailView):
     model = Article
@@ -114,14 +115,19 @@ class DetailArcticleView(DetailView):
         context['bathroom_count'] = Article.objects.filter(bathroom=True).count()
         context['outdoor_count'] = Article.objects.filter(outdoor=True).count()
         context['office_count'] = Article.objects.filter(office=True).count()
-        context['user_bio'] = Bio.objects.get_or_create(user=self.request.user)[0]
+
+        # Check if the user is authenticated before querying the Bio model
+        if isinstance(self.request.user, AnonymousUser):
+            context['user_bio'] = None
+        else:
+            context['user_bio'] = Bio.objects.get_or_create(user=self.request.user)[0]
 
         return context
 
 class LikeArticle(View):
     def post(self, request, pk):
         article = Article.objects.get(id=pk)
-        if article.likes.filter(pk=self.request.user.id).exists():
+        if article.likes.filter(pk=request.user.id).exists():
             article.likes.remove(request.user.id)
         else:
             article.likes.add(request.user.id)
