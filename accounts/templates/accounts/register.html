@@ -1,8 +1,21 @@
   <!-- accounts/register.html -->
-{% extends "blog/blog_base.html" %}
+{% extends "base.html" %}
 {% load crispy_forms_tags %}
 
 {% block content %}
+    <!-- ======= login Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>login</h2>
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>login</li>
+          </ol>
+        </div>
+      </div>
+    </section><!-- End login Section -->
+    
     <div class="row">
         <div class="col-l1 col-md-4 mx-auto mt-5">
             <form method="POST">
@@ -12,7 +25,7 @@
                 <button class="btn btn-secondary" type="submit">Sign Up</button>
             </form>
             <div class="pt-3">
-                <small class="text-muted">Already have an account? <a href="{% url 'login' %}">Log In</a></small>
+                <small class="text-muted pb-3">Already have an account? <a href="{% url 'accounts:login' %}">Log In</a></small>
             </div>
         </div>
     </div>

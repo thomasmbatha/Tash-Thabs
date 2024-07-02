@@ -1,7 +1,25 @@
   <!-- accounts/logout.html -->
-{% extends "blog/blog_base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
+
+
+{% endblock %}
+
+    <!-- ======= Our Gallery Sectin ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Our Gallery</h2>
+                <ol>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li>Our Gallery</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Our Galler Section -->
     <div class="row">
         <div class="col-l1 col-md-4 mx-auto mt-5">
             <h2>You Have Been Logged Out</h2>
@@ -12,5 +30,3 @@
             </div>
         </div>
     </div>
-
-{% endblock %}

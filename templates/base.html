@@ -62,13 +62,12 @@
             </ul>
           </li>
           <li><a href="{% url 'contacts' %}">Contact Us</a></li>
-          <li><span class="separator">|</span></li>
-          <li><a class="{% if request.path == '/accounts/login/' %}active{% endif %}" href="{% url 'login' %}">login</a></li>
-          <li><a class="{% if request.path == '/accounts/signup/' %}active{% endif %}" href="{% url 'register' %}">signup</a></li>
-
-          
+          <li><span class="separator">|</span></li>        
           {% if user.is_authenticated %}
-          {% comment %} <li><a href="{% url 'accounts:logout' %}"></a>Logout</li> {% endcomment %}
+            <li><a class="{% if request.path == '/accounts/logout/' %}active{% endif %}" href="{% url 'accounts:logout' %}">Logout</a></li>
+          {% else %}
+            <li><a class="{% if request.path == '/accounts/login/' %}active{% endif %}" href="{% url 'accounts:login' %}">login</a></li>
+            <li><a class="{% if request.path == '/accounts/signup/' %}active{% endif %}" href="{% url 'accounts:register' %}">signup</a></li>
           {% endif %}
             
         </ul>

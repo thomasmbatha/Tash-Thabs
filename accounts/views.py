@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from django.views import View
 from .forms import UserRegisterForm
 
-# Create your views here.
-
 class RegisterView(View):
     def get(self, request):
         form = UserRegisterForm()
@@ -16,4 +14,4 @@ class RegisterView(View):
             form.save()
             return redirect('blog_home')
         else:
-            return render(request, 'blog/blog_home.html', {'form': form})
+            return render(request, 'accounts/register.html', {'form': form})
